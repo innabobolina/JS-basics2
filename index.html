@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 31-50</title>
+</head>
+
+<body>
+    <script>
+        // Exercises 31-43 (Week 6) and 44-50 (Week 7)
+        // Loops
+        // Exercise 31
+        for (let i = 0; i < 6; i++) console.log("Da ba dee da ba daa");
+
+        // Exercise 32
+        // Write a loop that prints:
+        // 25
+        // 20
+        // 15
+        // 10
+        // 5
+        // 0
+        for (let i = 25; i >= 0; i -= 5) console.log(i)
+
+        // Exercise 33
+        const people = ["Scooby", "Velma", "Daphne", "Shaggy", "Fred"];
+        for (let person of people) console.log(person.toUpperCase());
+
+        // Exercise 34
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        for (let n of numbers) console.log(n * n);
+
+        // Functions
+        // Exercise 35
+        function printHeart() {
+            console.log("<3")
+        }
+        printHeart();
+
+        // Exercise 36
+        function rant(message) {
+            for (let i = 0; i < 3; i++) console.log(message.toUpperCase())
+        }
+
+        // Exercise 37
+        function isSnakeEyes(n, m) {
+            let message = n === 1 && m === 1 ? "Snake Eyes!" : "Not Snake Eyes!";
+            console.log(message)
+        }
+
+        // Exercise 38
+        function multiply(m, n) {
+            return m * n
+        }
+
+        // Exercise 39
+        function isShortsWeather(t) {
+            return t >= 75
+        }
+
+        // Exercise 40
+        function lastElement(arr) {
+            return arr.length === 0 ? null : arr[arr.length - 1]
+        }
+
+        // Exercise 41
+        function capitalize(s) {
+            return s[0].toUpperCase() + s.slice(1)
+        }
+
+        // Exercise 42
+        function sumArray(arr) {
+            return arr.reduce((a, b) => a + b)
+        }
+
+        // Exercise 43
+        function returnDay(n) {
+            let days = [null, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            if (n < 1 || n > 7) return null;
+            return days[n]
+        }
+
+        // Exercises 44-50 (Week 7)
+        // Exercise 44: Function Expression
+        let square = function(n) {
+                return n * n
+            }
+            // square(4) // 16
+
+        // Exercise 45: functions as object methods
+        const square = {
+                area: function(side) {
+                    return side * side
+                },
+                perimeter: function(side) {
+                    return side * 4
+                }
+            }
+            // square.area(10) //100
+            // square.perimeter(10) //40
+
+        // Exercise 46: more functions as object methods
+        const hen = {
+            name: "Helen",
+            eggCount: 0,
+            layAnEgg: function(eggCount) {
+                this.eggCount += 1;
+                return 'EGG'
+            }
+        }
+
+        // Exercise 47: map
+        function cleanNames(arr) {
+            return arr.map(item => item.trim())
+        }
+
+        // Exercise 48: arrow functions
+        const greet = s => `Hey ${s}!`
+
+        // Exercise 49: filter
+        // const validUserNames = (arr) =>  arr.filter(item => item.length < 10)
+        function validUserNames(arr) {
+            return arr.filter(item => item.length < 10)
+        }
+
+        // Exercise 50: some/every
+        function allEvens(arr) {
+            return arr.every(n => n % 2 === 0)
+        }
+
+        // DOM
+        // Exercise 51
+        const image = document.getElementById("unicorn");
+        const heading = document.getElementById("mainheading");
+
+        // Exercise 52
+        const doneTodos = document.querySelectorAll(".done");
+        const checkbox = document.querySelector("input[type='checkbox']");
+
+        // Exercise 53
+        document.querySelector('span').innerHTML = "Disgusting";
+        // or can use .innerText or .textContent
+
+        // Exercise 54: Manipulating Attributes
+        let image = document.querySelector('img');
+        image.src = 'https://www.flaticon.com/svg/static/icons/svg/3523/3523063.svg';
+        image.alt = 'chicken';
+
+        // Exercise 55
+        document.querySelector("#container").style.textAlign = "center";
+        const img = document.querySelector("img");
+        img.style.width = "150px";
+        img.style.borderRadius = '50%';
+
+        // Exercise 56
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        let spans = document.querySelectorAll("span");
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].style.color = colors[i]
+        }
+        // <h1>
+        //     <span>R</span>
+        //     <span>A</span>
+        //     <span>I</span>
+        //     <span>N</span>
+        //     <span>B</span>
+        //     <span>O</span>
+        //     <span>W</span>
+        // </h1>
+
+        // Exercise 57: classList.add, remove, toggle
+        const lis = document.querySelectorAll("li");
+        for (let li of lis) {
+            li.classList.toggle('highlight');
+        }
+
+        // Exercise 58
+        for (let i = 0; i < 100; i++) {
+            let button = document.createElement('button');
+            button.innerText = 'Hey!'; // can also use .append
+            document.querySelector("#container").appendChild(button);
+        }
+
+        // Exercise 59: inline event handlers
+        // <h1 onclick="console.log('boo')">Inline Events Suck...</h1>
+        // <button id="btn" onclick="console.log('clicked')">Click Me</button>
+
+        // Exercise 60
+        document.querySelector("#hello").addEventListener("click", () => console.log('hello'));
+        document.querySelector("#goodbye").addEventListener("click", () => console.log('goodbye'));
+
+        // Exercise 61
+        const form = document.querySelector("form");
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // alert(form.elements.product.value);
+            const newLi = document.createElement('li');
+            let qty = form.elements.qty;
+            let product = form.elements.product;
+            newLi.innerText = qty.value + ' ' + product.value;
+            document.querySelector("#list").appendChild(newLi);
+            qty.value = '';
+            product.value = '';
+        })
+    </script>
+</body>
+
+</html>
